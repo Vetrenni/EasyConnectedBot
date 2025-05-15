@@ -7,8 +7,8 @@ from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 
-API_TOKEN = '7673946117:AAEzu5CSMfABRgvi9036Pz6cHJ08hP317z0'
-ANDREY_USER_ID = 5838284980  # <-- сюда вставьте user_id Андрея
+API_TOKEN = os.getenv('7673946117:AAEzu5CSMfABRgvi9036Pz6cHJ08hP317z0')
+ANDREY_USER_ID = int(os.getenv('5838284980'))
 
 STATS_FILE = "user_stats.json"
 SETTINGS_FILE = "user_settings.json"
