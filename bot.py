@@ -7,11 +7,12 @@ from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 
-API_TOKEN = '7673946117:AAEzu5CSMfABRgvi9036Pz6cHJ08hP317z0'
-ANDREY_USER_ID = 7335348694  # <-- сюда вставьте user_id Андрея
+API_TOKEN = '7673946117:AAEzu5CSMfABRgvi9036Pz6cHJ08hP317z0'  # или os.getenv('API_TOKEN')
+ANDREY_USER_ID = 7335348694
 
 STATS_FILE = "user_stats.json"
 SETTINGS_FILE = "user_settings.json"
+ALLOWED_USERS_FILE = "allowed_users.json"
 
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher()
@@ -19,23 +20,23 @@ dp = Dispatcher()
 main_menu_kb = ReplyKeyboardMarkup(
     keyboard=[
         [KeyboardButton(text='Отправить отчет')],
-        [KeyboardButton(text='Создать запрос на выплату')],
         [KeyboardButton(text='Статистика')],
         [KeyboardButton(text='Настройки')],
     ],
     resize_keyboard=True
 )
 
-settings_menu_kb = ReplyKeyboardMarkup(
-    keyboard=[
+def get_settings_menu_kb(is_admin=False):
+    keyboard = [
         [KeyboardButton(text='Метод выплаты')],
         [KeyboardButton(text='Реквизиты')],
         [KeyboardButton(text='Страна')],
         [KeyboardButton(text='Банк')],
-        [KeyboardButton(text='Назад в меню')],
-    ],
-    resize_keyboard=True
-)
+    ]
+    if is_admin:
+        keyboard.append([KeyboardButton(text='Добавить пользователя')])
+    keyboard.append([KeyboardButton(text='Назад в меню')])
+    return ReplyKeyboardMarkup(keyboard=keyboard, resize_keyboard=True)
 
 back_main_kb = ReplyKeyboardMarkup(
     keyboard=[[KeyboardButton(text='Назад в меню')]],
@@ -49,8 +50,6 @@ back_settings_kb = ReplyKeyboardMarkup(
 
 def load_json(filename):
     if os.path.exists(filename):
-        if os.path.getsize(filename) == 0:
-            return {}
         with open(filename, "r", encoding="utf-8") as f:
             return json.load(f)
     return {}
@@ -61,6 +60,8 @@ def save_json(filename, data):
 
 user_stats = load_json(STATS_FILE)
 user_settings = load_json(SETTINGS_FILE)
+allowed_users = set(load_json(ALLOWED_USERS_FILE) or [])
+allowed_users.add(str(ANDREY_USER_ID))  # Андрей всегда в списке
 
 class ReportForm(StatesGroup):
     streamer_id = State()
@@ -73,9 +74,16 @@ class SettingsForm(StatesGroup):
     requisites = State()
     country = State()
     bank = State()
+    add_user = State()
+
+def is_allowed(user_id):
+    return str(user_id) in allowed_users
 
 @dp.message(Command("start"))
 async def cmd_start(message: types.Message):
+    if not is_allowed(message.from_user.id):
+        await message.answer("У вас нет доступа к этому боту. Обратитесь к администратору.", reply_markup=ReplyKeyboardRemove())
+        return
     await message.answer(
         "Привет! Выберите действие:",
         reply_markup=main_menu_kb
@@ -83,6 +91,9 @@ async def cmd_start(message: types.Message):
 
 @dp.message(F.text == "Отправить отчет")
 async def start_report(message: types.Message, state: FSMContext):
+    if not is_allowed(message.from_user.id):
+        await message.answer("У вас нет доступа к этому боту. Обратитесь к администратору.", reply_markup=ReplyKeyboardRemove())
+        return
     await message.answer("Введите номер стриммера:", reply_markup=back_main_kb)
     await state.set_state(ReportForm.streamer_id)
 
@@ -157,6 +168,9 @@ async def process_confirm(message: types.Message, state: FSMContext):
 
 @dp.message(F.text == "Статистика")
 async def show_statistics(message: types.Message):
+    if not is_allowed(message.from_user.id):
+        await message.answer("У вас нет доступа к этому боту. Обратитесь к администратору.", reply_markup=ReplyKeyboardRemove())
+        return
     user_id = str(message.from_user.id)
     stats = user_stats.get(user_id)
     if stats:
@@ -170,13 +184,17 @@ async def show_statistics(message: types.Message):
         await message.answer("У вас пока нет отправленных отчетов.", reply_markup=main_menu_kb)
 
 @dp.message(F.text == "Настройки")
-async def settings_menu(message: types.Message):
+async def settings_menu(message: types.Message, state: FSMContext):
+    if not is_allowed(message.from_user.id):
+        await message.answer("У вас нет доступа к этому боту. Обратитесь к администратору.", reply_markup=ReplyKeyboardRemove())
+        return
     user_id = str(message.from_user.id)
     settings = user_settings.get(user_id, {})
     payout_method = settings.get("payout_method", "не указано")
     requisites = settings.get("requisites", "не указано")
     country = settings.get("country", "не указано")
     bank = settings.get("bank", "не указано")
+    is_admin = message.from_user.id == ANDREY_USER_ID
     text = (
         f"Ваши текущие настройки:\n"
         f"Метод выплаты: {payout_method}\n"
@@ -185,7 +203,7 @@ async def settings_menu(message: types.Message):
         f"Банк: {bank}\n\n"
         "Выберите, что хотите изменить:"
     )
-    await message.answer(text, reply_markup=settings_menu_kb)
+    await message.answer(text, reply_markup=get_settings_menu_kb(is_admin))
 
 @dp.message(F.text == "Назад в меню")
 async def back_to_menu(message: types.Message, state: FSMContext):
@@ -200,14 +218,14 @@ async def set_payout_method(message: types.Message, state: FSMContext):
 @dp.message(SettingsForm.payout_method, F.text == "Назад в настройки")
 async def back_from_settings_payout(message: types.Message, state: FSMContext):
     await state.clear()
-    await settings_menu(message)
+    await settings_menu(message, state)
 
 @dp.message(SettingsForm.payout_method)
 async def save_payout_method(message: types.Message, state: FSMContext):
     user_id = str(message.from_user.id)
     user_settings.setdefault(user_id, {})["payout_method"] = message.text
-    save_json("user_settings.json", user_settings)
-    await message.answer("Метод выплаты сохранён.", reply_markup=settings_menu_kb)
+    save_json(SETTINGS_FILE, user_settings)
+    await message.answer("Метод выплаты сохранён.", reply_markup=get_settings_menu_kb(message.from_user.id == ANDREY_USER_ID))
     await state.clear()
 
 @dp.message(F.text == "Реквизиты")
@@ -218,14 +236,14 @@ async def set_requisites(message: types.Message, state: FSMContext):
 @dp.message(SettingsForm.requisites, F.text == "Назад в настройки")
 async def back_from_settings_requisites(message: types.Message, state: FSMContext):
     await state.clear()
-    await settings_menu(message)
+    await settings_menu(message, state)
 
 @dp.message(SettingsForm.requisites)
 async def save_requisites(message: types.Message, state: FSMContext):
     user_id = str(message.from_user.id)
     user_settings.setdefault(user_id, {})["requisites"] = message.text
-    save_json("user_settings.json", user_settings)
-    await message.answer("Реквизиты сохранены.", reply_markup=settings_menu_kb)
+    save_json(SETTINGS_FILE, user_settings)
+    await message.answer("Реквизиты сохранены.", reply_markup=get_settings_menu_kb(message.from_user.id == ANDREY_USER_ID))
     await state.clear()
 
 @dp.message(F.text == "Страна")
@@ -236,14 +254,14 @@ async def set_country(message: types.Message, state: FSMContext):
 @dp.message(SettingsForm.country, F.text == "Назад в настройки")
 async def back_from_settings_country(message: types.Message, state: FSMContext):
     await state.clear()
-    await settings_menu(message)
+    await settings_menu(message, state)
 
 @dp.message(SettingsForm.country)
 async def save_country(message: types.Message, state: FSMContext):
     user_id = str(message.from_user.id)
     user_settings.setdefault(user_id, {})["country"] = message.text
-    save_json("user_settings.json", user_settings)
-    await message.answer("Страна сохранена.", reply_markup=settings_menu_kb)
+    save_json(SETTINGS_FILE, user_settings)
+    await message.answer("Страна сохранена.", reply_markup=get_settings_menu_kb(message.from_user.id == ANDREY_USER_ID))
     await state.clear()
 
 @dp.message(F.text == "Банк")
@@ -254,20 +272,48 @@ async def set_bank(message: types.Message, state: FSMContext):
 @dp.message(SettingsForm.bank, F.text == "Назад в настройки")
 async def back_from_settings_bank(message: types.Message, state: FSMContext):
     await state.clear()
-    await settings_menu(message)
+    await settings_menu(message, state)
 
 @dp.message(SettingsForm.bank)
 async def save_bank(message: types.Message, state: FSMContext):
     user_id = str(message.from_user.id)
     user_settings.setdefault(user_id, {})["bank"] = message.text
-    save_json("user_settings.json", user_settings)
-    await message.answer("Банк сохранён.", reply_markup=settings_menu_kb)
+    save_json(SETTINGS_FILE, user_settings)
+    await message.answer("Банк сохранён.", reply_markup=get_settings_menu_kb(message.from_user.id == ANDREY_USER_ID))
+    await state.clear()
+
+@dp.message(F.text == "Добавить пользователя")
+async def add_user_start(message: types.Message, state: FSMContext):
+    if message.from_user.id != ANDREY_USER_ID:
+        await message.answer("У вас нет прав для этого действия.")
+        return
+    await message.answer("Введите Telegram user id пользователя, которому хотите дать доступ:", reply_markup=back_settings_kb)
+    await state.set_state(SettingsForm.add_user)
+
+@dp.message(SettingsForm.add_user, F.text == "Назад в настройки")
+async def back_from_add_user(message: types.Message, state: FSMContext):
+    await state.clear()
+    await settings_menu(message, state)
+
+@dp.message(SettingsForm.add_user)
+async def add_user_process(message: types.Message, state: FSMContext):
+    if message.from_user.id != ANDREY_USER_ID:
+        await message.answer("У вас нет прав для этого действия.")
+        await state.clear()
+        return
+    new_user_id = message.text.strip()
+    if not new_user_id.isdigit():
+        await message.answer("User id должен быть числом. Попробуйте ещё раз или нажмите 'Назад в настройки'.")
+        return
+    allowed_users.add(new_user_id)
+    save_json(ALLOWED_USERS_FILE, list(allowed_users))
+    await message.answer(f"Пользователь с user id {new_user_id} добавлен!", reply_markup=get_settings_menu_kb(True))
     await state.clear()
 
 @dp.message(F.text == "Назад в настройки")
 async def back_to_settings(message: types.Message, state: FSMContext):
     await state.clear()
-    await settings_menu(message)
+    await settings_menu(message, state)
 
 async def main():
     await dp.start_polling(bot)
