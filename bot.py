@@ -7,8 +7,8 @@ from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 
-API_TOKEN = os.getenv('7673946117:AAEzu5CSMfABRgvi9036Pz6cHJ08hP317z0')
-ANDREY_USER_ID = int(os.getenv('5838284980'))
+API_TOKEN = '7673946117:AAEzu5CSMfABRgvi9036Pz6cHJ08hP317z0'
+ANDREY_USER_ID = 7335348694  # <-- сюда вставьте user_id Андрея
 
 STATS_FILE = "user_stats.json"
 SETTINGS_FILE = "user_settings.json"
@@ -49,6 +49,8 @@ back_settings_kb = ReplyKeyboardMarkup(
 
 def load_json(filename):
     if os.path.exists(filename):
+        if os.path.getsize(filename) == 0:
+            return {}
         with open(filename, "r", encoding="utf-8") as f:
             return json.load(f)
     return {}
