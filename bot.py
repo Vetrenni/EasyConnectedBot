@@ -207,6 +207,12 @@ async def process_confirm(message: types.Message, state: FSMContext):
             except Exception:
                 pass
         await message.answer("Ваш отчет отправлен!", reply_markup=main_menu_kb())
+        # Отправка гифки после отчёта
+        try:
+            with open("roblox-robux.gif", "rb") as gif:
+                await message.answer_animation(gif)
+        except Exception:
+            pass
     else:
         await message.answer("Отправка отчета отменена.", reply_markup=main_menu_kb())
     await state.clear()
@@ -255,17 +261,6 @@ async def settings_menu(message: types.Message, state: FSMContext):
 async def admin_panel(message: types.Message):
     is_global_admin_ = is_global_admin(message.from_user.id)
     await message.answer("Админ-панель:", reply_markup=get_admin_panel_kb(is_global_admin_))
-
-def get_admin_panel_kb(is_global_admin=False):
-    keyboard = [
-        [KeyboardButton(text='Добавить пользователя')],
-        [KeyboardButton(text='Убрать пользователя')],
-    ]
-    if is_global_admin:
-        keyboard.append([KeyboardButton(text='Выдать админа')])
-        keyboard.append([KeyboardButton(text='Удалить админа')])
-    keyboard.append([KeyboardButton(text='Назад в настройки')])
-    return ReplyKeyboardMarkup(keyboard=keyboard, resize_keyboard=True)
 
 @dp.message(F.text == "Назад в меню")
 async def back_to_menu(message: types.Message, state: FSMContext):
