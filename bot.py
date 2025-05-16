@@ -48,16 +48,6 @@ for gid in INITIAL_GLOBAL_ADMINS:
     global_admins.add(str(gid))
 save_json(GLOBAL_ADMINS_FILE, list(global_admins))
 
-def main_menu_kb(is_global_admin=False):
-    keyboard = [
-        [KeyboardButton(text='Отправить отчет')],
-        [KeyboardButton(text='Статистика')],
-        [KeyboardButton(text='Настройки')],
-    ]
-    if is_global_admin:
-        keyboard.append([KeyboardButton(text='Выдать админа')])
-    return ReplyKeyboardMarkup(keyboard=keyboard, resize_keyboard=True)
-
 def get_settings_menu_kb(is_admin=False, is_global_admin=False):
     keyboard = [
         [KeyboardButton(text='Метод выплаты')],
@@ -67,9 +57,19 @@ def get_settings_menu_kb(is_admin=False, is_global_admin=False):
     ]
     if is_admin:
         keyboard.append([KeyboardButton(text='Добавить пользователя')])
+        keyboard.append([KeyboardButton(text='Убрать пользователя')])
     if is_global_admin:
         keyboard.append([KeyboardButton(text='Выдать админа')])
+        keyboard.append([KeyboardButton(text='Удалить админа')])
     keyboard.append([KeyboardButton(text='Назад в меню')])
+    return ReplyKeyboardMarkup(keyboard=keyboard, resize_keyboard=True)
+
+def main_menu_kb():
+    keyboard = [
+        [KeyboardButton(text='Отправить отчет')],
+        [KeyboardButton(text='Статистика')],
+        [KeyboardButton(text='Настройки')],
+    ]
     return ReplyKeyboardMarkup(keyboard=keyboard, resize_keyboard=True)
 
 back_main_kb = ReplyKeyboardMarkup(
@@ -93,7 +93,9 @@ class SettingsForm(StatesGroup):
     country = State()
     bank = State()
     add_user = State()
+    remove_user = State()
     give_admin = State()
+    remove_admin = State()
 
 def is_allowed(user_id):
     return str(user_id) in allowed_users or is_admin(user_id) or is_global_admin(user_id)
@@ -111,7 +113,7 @@ async def cmd_start(message: types.Message):
         return
     await message.answer(
         "Привет! Выберите действие:",
-        reply_markup=main_menu_kb(is_global_admin(message.from_user.id))
+        reply_markup=main_menu_kb()
     )
 
 @dp.message(F.text == "Отправить отчет")
@@ -128,7 +130,7 @@ async def start_report(message: types.Message, state: FSMContext):
 @dp.message(ReportForm.confirm, F.text == "Назад в меню")
 async def back_from_report(message: types.Message, state: FSMContext):
     await state.clear()
-    await message.answer("Главное меню:", reply_markup=main_menu_kb(is_global_admin(message.from_user.id)))
+    await message.answer("Главное меню:", reply_markup=main_menu_kb())
 
 @dp.message(ReportForm.streamer_id)
 async def process_streamer_id(message: types.Message, state: FSMContext):
@@ -165,7 +167,7 @@ async def process_confirm(message: types.Message, state: FSMContext):
             hours = float(data['hours'])
             amount = float(data['amount'])
         except ValueError:
-            await message.answer("Ошибка: количество часов и сумма должны быть числами.", reply_markup=main_menu_kb(is_global_admin(message.from_user.id)))
+            await message.answer("Ошибка: количество часов и сумма должны быть числами.", reply_markup=main_menu_kb())
             await state.clear()
             return
 
@@ -201,9 +203,9 @@ async def process_confirm(message: types.Message, state: FSMContext):
                 await bot.send_message(int(admin_user_id), report_text)
             except Exception:
                 pass
-        await message.answer("Ваш отчет отправлен!", reply_markup=main_menu_kb(is_global_admin(message.from_user.id)))
+        await message.answer("Ваш отчет отправлен!", reply_markup=main_menu_kb())
     else:
-        await message.answer("Отправка отчета отменена.", reply_markup=main_menu_kb(is_global_admin(message.from_user.id)))
+        await message.answer("Отправка отчета отменена.", reply_markup=main_menu_kb())
     await state.clear()
 
 @dp.message(F.text == "Статистика")
@@ -218,10 +220,10 @@ async def show_statistics(message: types.Message):
             f"Ваша статистика:\n"
             f"Общее количество часов: {stats['hours']}\n"
             f"Общая сумма: {stats['amount']}",
-            reply_markup=main_menu_kb(is_global_admin(message.from_user.id))
+            reply_markup=main_menu_kb()
         )
     else:
-        await message.answer("У вас пока нет отправленных отчетов.", reply_markup=main_menu_kb(is_global_admin(message.from_user.id)))
+        await message.answer("У вас пока нет отправленных отчетов.", reply_markup=main_menu_kb())
 
 @dp.message(F.text == "Настройки")
 async def settings_menu(message: types.Message, state: FSMContext):
@@ -249,7 +251,7 @@ async def settings_menu(message: types.Message, state: FSMContext):
 @dp.message(F.text == "Назад в меню")
 async def back_to_menu(message: types.Message, state: FSMContext):
     await state.clear()
-    await message.answer("Главное меню:", reply_markup=main_menu_kb(is_global_admin(message.from_user.id)))
+    await message.answer("Главное меню:", reply_markup=main_menu_kb())
 
 @dp.message(F.text == "Метод выплаты")
 async def set_payout_method(message: types.Message, state: FSMContext):
@@ -356,6 +358,42 @@ async def add_user_process(message: types.Message, state: FSMContext):
     except Exception:
         pass
 
+@dp.message(F.text == "Убрать пользователя")
+async def remove_user_start(message: types.Message, state: FSMContext):
+    if not (is_admin(message.from_user.id) or is_global_admin(message.from_user.id)):
+        await message.answer("У вас нет прав для этого действия.")
+        return
+    await message.answer("Введите Telegram user id пользователя, которого хотите удалить из доступа:", reply_markup=back_settings_kb)
+    await state.set_state(SettingsForm.remove_user)
+
+@dp.message(SettingsForm.remove_user, F.text == "Назад в настройки")
+async def back_from_remove_user(message: types.Message, state: FSMContext):
+    await state.clear()
+    await settings_menu(message, state)
+
+@dp.message(SettingsForm.remove_user)
+async def remove_user_process(message: types.Message, state: FSMContext):
+    if not (is_admin(message.from_user.id) or is_global_admin(message.from_user.id)):
+        await message.answer("У вас нет прав для этого действия.")
+        await state.clear()
+        return
+    remove_user_id = message.text.strip()
+    if not remove_user_id.isdigit():
+        await message.answer("User id должен быть числом. Попробуйте ещё раз или нажмите 'Назад в настройки'.")
+        return
+    if remove_user_id in allowed_users:
+        allowed_users.remove(remove_user_id)
+        save_json(ALLOWED_USERS_FILE, list(allowed_users))
+        await message.answer(f"Пользователь с user id {remove_user_id} удалён из доступа!", reply_markup=get_settings_menu_kb(is_admin(message.from_user.id), is_global_admin(message.from_user.id)))
+        # Уведомление пользователя об удалении
+        try:
+            await bot.send_message(int(remove_user_id), "Ваш доступ к боту был удалён.")
+        except Exception:
+            pass
+    else:
+        await message.answer("Пользователь с таким user id не найден в списке доступа.", reply_markup=get_settings_menu_kb(is_admin(message.from_user.id), is_global_admin(message.from_user.id)))
+    await state.clear()
+
 @dp.message(F.text == "Выдать админа")
 async def give_admin_start(message: types.Message, state: FSMContext):
     if not is_global_admin(message.from_user.id):
@@ -388,6 +426,42 @@ async def give_admin_process(message: types.Message, state: FSMContext):
         await bot.send_message(int(new_admin_id), "Вам выдан статус администратора бота!")
     except Exception:
         pass
+
+@dp.message(F.text == "Удалить админа")
+async def remove_admin_start(message: types.Message, state: FSMContext):
+    if not is_global_admin(message.from_user.id):
+        await message.answer("У вас нет прав для этого действия.")
+        return
+    await message.answer("Введите Telegram user id администратора, которого хотите удалить:", reply_markup=back_settings_kb)
+    await state.set_state(SettingsForm.remove_admin)
+
+@dp.message(SettingsForm.remove_admin, F.text == "Назад в настройки")
+async def back_from_remove_admin(message: types.Message, state: FSMContext):
+    await state.clear()
+    await settings_menu(message, state)
+
+@dp.message(SettingsForm.remove_admin)
+async def remove_admin_process(message: types.Message, state: FSMContext):
+    if not is_global_admin(message.from_user.id):
+        await message.answer("У вас нет прав для этого действия.")
+        await state.clear()
+        return
+    remove_admin_id = message.text.strip()
+    if not remove_admin_id.isdigit():
+        await message.answer("User id должен быть числом. Попробуйте ещё раз или нажмите 'Назад в настройки'.")
+        return
+    if remove_admin_id in admins:
+        admins.remove(remove_admin_id)
+        save_json(ADMINS_FILE, list(admins))
+        await message.answer(f"Пользователь с user id {remove_admin_id} удалён из админов!", reply_markup=get_settings_menu_kb(is_admin(message.from_user.id), is_global_admin(message.from_user.id)))
+        # Уведомление пользователя об удалении
+        try:
+            await bot.send_message(int(remove_admin_id), "Ваш статус администратора бота был удалён.")
+        except Exception:
+            pass
+    else:
+        await message.answer("Пользователь с таким user id не найден в списке админов.", reply_markup=get_settings_menu_kb(is_admin(message.from_user.id), is_global_admin(message.from_user.id)))
+    await state.clear()
 
 @dp.message(F.text == "Назад в настройки")
 async def back_to_settings(message: types.Message, state: FSMContext):
