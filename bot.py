@@ -9,13 +9,15 @@ from aiogram.fsm.state import State, StatesGroup
 
 API_TOKEN = '7673946117:AAEzu5CSMfABRgvi9036Pz6cHJ08hP317z0'
 
+# Пути к файлам
 STATS_FILE = "user_stats.json"
 SETTINGS_FILE = "user_settings.json"
 ALLOWED_USERS_FILE = "allowed_users.json"
 ADMINS_FILE = "admins.json"
 GLOBAL_ADMINS_FILE = "global_admins.json"
 
-INITIAL_GLOBAL_ADMINS = ['5838284980']  # <-- впиши нужные id строками
+# Изначальные глобальные админы
+INITIAL_GLOBAL_ADMINS = ['5838284980']  # <-- впиши свои ID
 
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher()
@@ -28,7 +30,7 @@ def load_json(filename):
                 if not content:
                     return [] if filename in [ADMINS_FILE, GLOBAL_ADMINS_FILE] else {}
                 return json.loads(content)
-        except Exception:
+        except:
             return [] if filename in [ADMINS_FILE, GLOBAL_ADMINS_FILE] else {}
     return [] if filename in [ADMINS_FILE, GLOBAL_ADMINS_FILE] else {}
 
@@ -36,56 +38,54 @@ def save_json(filename, data):
     with open(filename, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
+# Загружаем данные
 user_stats = load_json(STATS_FILE)
 user_settings = load_json(SETTINGS_FILE)
 allowed_users = set(load_json(ALLOWED_USERS_FILE) or [])
 admins = set(str(x) for x in load_json(ADMINS_FILE) or [])
 global_admins = set(str(x) for x in load_json(GLOBAL_ADMINS_FILE) or [])
 
+# Изначальные глобальные админы
 for gid in INITIAL_GLOBAL_ADMINS:
     global_admins.add(str(gid))
 save_json(GLOBAL_ADMINS_FILE, list(global_admins))
 
+# --- Клавиатуры ---
+def main_menu_kb():
+    return ReplyKeyboardMarkup(
+        keyboard=[
+            [KeyboardButton(text='Отправить отчет')],
+            [KeyboardButton(text='Статистика')],
+            [KeyboardButton(text='Настройки')],
+        ],
+        resize_keyboard=True
+    )
+
 def get_settings_menu_kb(is_admin=False, is_global_admin=False):
-    keyboard = [
+    kb = [
         [KeyboardButton(text='Метод выплаты')],
         [KeyboardButton(text='Реквизиты')],
         [KeyboardButton(text='Страна')],
         [KeyboardButton(text='Банк')],
     ]
     if is_admin or is_global_admin:
-        keyboard.append([KeyboardButton(text='Админ-панель')])
-    keyboard.append([KeyboardButton(text='Назад в меню')])
-    return ReplyKeyboardMarkup(keyboard=keyboard, resize_keyboard=True)
+        kb.append([KeyboardButton(text='Админ-панель')])
+    kb.append([KeyboardButton(text='Назад в меню')])
+    return ReplyKeyboardMarkup(kb, resize_keyboard=True)
 
 def get_admin_panel_kb(is_global_admin=False):
-    keyboard = [
+    kb = [
         [KeyboardButton(text='Добавить пользователя')],
         [KeyboardButton(text='Убрать пользователя')],
     ]
     if is_global_admin:
-        keyboard.append([KeyboardButton(text='Выдать админа')])
-        keyboard.append([KeyboardButton(text='Удалить админа')])
-    keyboard.append([KeyboardButton(text='Назад в настройки')])
-    return ReplyKeyboardMarkup(keyboard=keyboard, resize_keyboard=True)
+        kb.append([KeyboardButton(text='Выдать админа')])
+        kb.append([KeyboardButton(text='Удалить админа')])
+        kb.append([KeyboardButton(text='Статистика пользователей')])
+    kb.append([KeyboardButton(text='Назад в настройки')])
+    return ReplyKeyboardMarkup(kb, resize_keyboard=True)
 
-def main_menu_kb():
-    keyboard = [
-        [KeyboardButton(text='Отправить отчет')],
-        [KeyboardButton(text='Статистика')],
-        [KeyboardButton(text='Настройки')],
-    ]
-    return ReplyKeyboardMarkup(keyboard=keyboard, resize_keyboard=True)
-
-back_main_kb = ReplyKeyboardMarkup(
-    keyboard=[[KeyboardButton(text='Назад в меню')]],
-    resize_keyboard=True
-)
-back_settings_kb = ReplyKeyboardMarkup(
-    keyboard=[[KeyboardButton(text='Назад в настройки')]],
-    resize_keyboard=True
-)
-
+# --- FSM ---
 class ReportForm(StatesGroup):
     streamer_id = State()
     hours = State()
@@ -102,6 +102,7 @@ class SettingsForm(StatesGroup):
     give_admin = State()
     remove_admin = State()
 
+# --- Проверки ---
 def is_allowed(user_id):
     return str(user_id) in allowed_users or is_admin(user_id) or is_global_admin(user_id)
 
@@ -111,22 +112,20 @@ def is_admin(user_id):
 def is_global_admin(user_id):
     return str(user_id) in global_admins
 
+# --- Обработчики ---
 @dp.message(Command("start"))
 async def cmd_start(message: types.Message):
     if not is_allowed(message.from_user.id):
         await message.answer("У вас нет доступа к этому боту. Обратитесь к администратору.", reply_markup=ReplyKeyboardRemove())
         return
-    await message.answer(
-        "Привет! Выберите действие:",
-        reply_markup=main_menu_kb()
-    )
+    await message.answer("Привет! Выберите действие:", reply_markup=main_menu_kb())
 
 @dp.message(F.text == "Отправить отчет")
 async def start_report(message: types.Message, state: FSMContext):
     if not is_allowed(message.from_user.id):
         await message.answer("У вас нет доступа к этому боту. Обратитесь к администратору.", reply_markup=ReplyKeyboardRemove())
         return
-    await message.answer("Введите номер стриммера:", reply_markup=back_main_kb)
+    await message.answer("Введите номер стриммера:", reply_markup=ReplyKeyboardRemove())
     await state.set_state(ReportForm.streamer_id)
 
 @dp.message(ReportForm.streamer_id, F.text == "Назад в меню")
@@ -140,13 +139,13 @@ async def back_from_report(message: types.Message, state: FSMContext):
 @dp.message(ReportForm.streamer_id)
 async def process_streamer_id(message: types.Message, state: FSMContext):
     await state.update_data(streamer_id=message.text)
-    await message.answer("Введите количество часов:", reply_markup=back_main_kb)
+    await message.answer("Введите количество часов:", reply_markup=ReplyKeyboardRemove())
     await state.set_state(ReportForm.hours)
 
 @dp.message(ReportForm.hours)
 async def process_hours(message: types.Message, state: FSMContext):
     await state.update_data(hours=message.text)
-    await message.answer("Введите сумму:", reply_markup=back_main_kb)
+    await message.answer("Введите сумму:", reply_markup=ReplyKeyboardRemove())
     await state.set_state(ReportForm.amount)
 
 @dp.message(ReportForm.amount)
@@ -160,7 +159,7 @@ async def process_amount(message: types.Message, state: FSMContext):
         f"Сумма: {data['amount']}\n\n"
         "Если всё верно, напишите 'Да'. Для отмены — 'Нет'."
     )
-    await message.answer(text, reply_markup=back_main_kb)
+    await message.answer(text, reply_markup=ReplyKeyboardRemove())
     await state.set_state(ReportForm.confirm)
 
 @dp.message(ReportForm.confirm)
@@ -171,17 +170,17 @@ async def process_confirm(message: types.Message, state: FSMContext):
         try:
             hours = float(data['hours'])
             amount = float(data['amount'])
-        except ValueError:
-            await message.answer("Ошибка: количество часов и сумма должны быть числами.", reply_markup=main_menu_kb())
+        except:
+            await message.answer("Ошибка: часы и сумма должны быть числами.", reply_markup=main_menu_kb())
             await state.clear()
             return
-
         if user_id not in user_stats:
-            user_stats[user_id] = {"hours": 0.0, "amount": 0.0}
-        user_stats[user_id]["hours"] += hours
-        user_stats[user_id]["amount"] += amount
+            user_stats[user_id] = {'hours': 0, 'amount': 0}
+        user_stats[user_id]['hours'] += hours
+        user_stats[user_id]['amount'] += amount
         save_json(STATS_FILE, user_stats)
 
+        # Получаем настройки пользователя
         settings = user_settings.get(user_id, {})
         payout_method = settings.get("payout_method", "не указано")
         requisites = settings.get("requisites", "не указано")
@@ -191,70 +190,71 @@ async def process_confirm(message: types.Message, state: FSMContext):
         report_text = (
             f"Новый отчет!\n"
             f"Номер стриммера: {data['streamer_id']}\n"
-            f"Количество часов: {data['hours']}\n"
+            f"Часы: {data['hours']}\n"
             f"Сумма: {data['amount']}\n"
             f"Отправитель: @{message.from_user.username or message.from_user.id}\n\n"
-            f"Настройки пользователя:\n"
+            f"Настройки:\n"
             f"Метод выплаты: {payout_method}\n"
             f"Реквизиты: {requisites}\n"
             f"Страна: {country}\n"
             f"Банк: {bank}"
         )
+        # Отправляем всем админам и глобальным админам
         recipients = set(admins) | set(global_admins)
-        for admin_user_id in recipients:
+        for uid in recipients:
             try:
-                await bot.send_message(int(admin_user_id), report_text)
-            except Exception:
+                await bot.send_message(int(uid), report_text)
+            except:
                 pass
-        await message.answer("Ваш отчет отправлен!", reply_markup=main_menu_kb())
-        # Отправка гифки после отчёта
+        # Отправляем гифку
         try:
             with open("roblox-robux.gif", "rb") as gif:
                 await message.answer_animation(gif)
-        except Exception:
+        except:
             pass
+        await message.answer("Ваш отчет отправлен!", reply_markup=main_menu_kb())
     else:
-        await message.answer("Отправка отчета отменена.", reply_markup=main_menu_kb())
+        await message.answer("Отмена отправки.", reply_markup=main_menu_kb())
     await state.clear()
 
 @dp.message(F.text == "Статистика")
 async def show_statistics(message: types.Message):
     if not is_allowed(message.from_user.id):
-        await message.answer("У вас нет доступа к этому боту. Обратитесь к администратору.", reply_markup=ReplyKeyboardRemove())
+        await message.answer("У вас нет доступа.", reply_markup=ReplyKeyboardRemove())
         return
     user_id = str(message.from_user.id)
-    stats = user_stats.get(user_id)
-    if stats:
-        await message.answer(
-            f"Ваша статистика:\n"
-            f"Общее количество часов: {stats['hours']}\n"
-            f"Общая сумма: {stats['amount']}",
-            reply_markup=main_menu_kb()
-        )
-    else:
-        await message.answer("У вас пока нет отправленных отчетов.", reply_markup=main_menu_kb())
+    stats = user_stats.get(user_id, {})
+    await message.answer(
+        f"Ваша статистика:\n"
+        f"Всего часов: {stats.get('hours', 0)}\n"
+        f"Общая сумма: {stats.get('amount', 0)}",
+        reply_markup=main_menu_kb()
+    )
 
 @dp.message(F.text == "Настройки")
-async def settings_menu(message: types.Message, state: FSMContext):
-    if not is_allowed(message.from_user.id):
-        await message.answer("У вас нет доступа к этому боту. Обратитесь к администратору.", reply_markup=ReplyKeyboardRemove())
-        return
+async def settings_menu(message: types.Message):
     user_id = str(message.from_user.id)
     settings = user_settings.get(user_id, {})
     payout_method = settings.get("payout_method", "не указано")
     requisites = settings.get("requisites", "не указано")
     country = settings.get("country", "не указано")
     bank = settings.get("bank", "не указано")
-    is_admin_ = is_admin(message.from_user.id)
-    is_global_admin_ = is_global_admin(message.from_user.id)
+    stats = user_stats.get(user_id, {})
+    total_hours = stats.get('hours', 0)
+    total_amount = stats.get('amount', 0)
     text = (
-        f"Ваши текущие настройки:\n"
+        f"Ваши настройки:\n"
         f"Метод выплаты: {payout_method}\n"
         f"Реквизиты: {requisites}\n"
         f"Страна: {country}\n"
         f"Банк: {bank}\n\n"
-        "Выберите, что хотите изменить:"
+        f"Статистика:\n"
+        f"Всего часов: {total_hours}\n"
+        f"Общая сумма: {total_amount}\n\n"
+        "Выберите, что изменить:"
     )
+    is_admin_ = is_admin(message.from_user.id)
+    is_global_admin_ = is_global_admin(message.from_user.id)
     await message.answer(text, reply_markup=get_settings_menu_kb(is_admin_, is_global_admin_))
 
 @dp.message(F.text == "Админ-панель")
@@ -262,154 +262,81 @@ async def admin_panel(message: types.Message):
     is_global_admin_ = is_global_admin(message.from_user.id)
     await message.answer("Админ-панель:", reply_markup=get_admin_panel_kb(is_global_admin_))
 
-@dp.message(F.text == "Назад в меню")
-async def back_to_menu(message: types.Message, state: FSMContext):
-    await state.clear()
-    await message.answer("Главное меню:", reply_markup=main_menu_kb())
-
-@dp.message(F.text == "Назад в настройки")
-async def back_to_settings(message: types.Message, state: FSMContext):
-    await state.clear()
-    await settings_menu(message, state)
-
-# --- Админ-панель ---
-
-@dp.message(F.text == "Добавить пользователя")
-async def add_user_start(message: types.Message, state: FSMContext):
-    if not (is_admin(message.from_user.id) or is_global_admin(message.from_user.id)):
-        await message.answer("У вас нет прав для этого действия.")
+@dp.message(F.text == "Статистика пользователей")
+async def stats_users(message: types.Message):
+    if not is_global_admin(message.from_user.id):
+        await message.answer("У вас нет прав.")
         return
-    await message.answer("Введите Telegram user id пользователя, которому хотите дать доступ:", reply_markup=back_settings_kb)
-    await state.set_state(SettingsForm.add_user)
-
-@dp.message(SettingsForm.add_user, F.text == "Назад в настройки")
-async def back_from_add_user(message: types.Message, state: FSMContext):
-    await state.clear()
-    await admin_panel(message)
-
-@dp.message(SettingsForm.add_user)
-async def add_user_process(message: types.Message, state: FSMContext):
-    if not (is_admin(message.from_user.id) or is_global_admin(message.from_user.id)):
-        await message.answer("У вас нет прав для этого действия.")
-        await state.clear()
+    if not user_stats:
+        await message.answer("Нет данных.")
         return
-    new_user_id = message.text.strip()
-    if not new_user_id.isdigit():
-        await message.answer("User id должен быть числом. Попробуйте ещё раз или нажмите 'Назад в настройки'.")
-        return
-    allowed_users.add(new_user_id)
-    save_json(ALLOWED_USERS_FILE, list(allowed_users))
-    await message.answer(f"Пользователь с user id {new_user_id} добавлен!", reply_markup=get_admin_panel_kb(is_global_admin(message.from_user.id)))
-    await state.clear()
-    try:
-        await bot.send_message(int(new_user_id), "Вам выдан доступ к боту! Теперь вы можете им пользоваться.")
-    except Exception:
-        pass
-
-@dp.message(F.text == "Убрать пользователя")
-async def remove_user_start(message: types.Message, state: FSMContext):
-    if not (is_admin(message.from_user.id) or is_global_admin(message.from_user.id)):
-        await message.answer("У вас нет прав для этого действия.")
-        return
-    await message.answer("Введите Telegram user id пользователя, которого хотите удалить из доступа:", reply_markup=back_settings_kb)
-    await state.set_state(SettingsForm.remove_user)
-
-@dp.message(SettingsForm.remove_user, F.text == "Назад в настройки")
-async def back_from_remove_user(message: types.Message, state: FSMContext):
-    await state.clear()
-    await admin_panel(message)
-
-@dp.message(SettingsForm.remove_user)
-async def remove_user_process(message: types.Message, state: FSMContext):
-    if not (is_admin(message.from_user.id) or is_global_admin(message.from_user.id)):
-        await message.answer("У вас нет прав для этого действия.")
-        await state.clear()
-        return
-    remove_user_id = message.text.strip()
-    if not remove_user_id.isdigit():
-        await message.answer("User id должен быть числом. Попробуйте ещё раз или нажмите 'Назад в настройки'.")
-        return
-    if remove_user_id in allowed_users:
-        allowed_users.remove(remove_user_id)
-        save_json(ALLOWED_USERS_FILE, list(allowed_users))
-        await message.answer(f"Пользователь с user id {remove_user_id} удалён из доступа!", reply_markup=get_admin_panel_kb(is_global_admin(message.from_user.id)))
+    lines = ["Статистика по пользователям:"]
+    for uid, stats in user_stats.items():
         try:
-            await bot.send_message(int(remove_user_id), "Ваш доступ к боту был удалён.")
-        except Exception:
-            pass
-    else:
-        await message.answer("Пользователь с таким user id не найден в списке доступа.", reply_markup=get_admin_panel_kb(is_global_admin(message.from_user.id)))
+            user = await bot.get_chat(int(uid))
+            name = user.username or user.full_name
+        except:
+            name = f"User {uid}"
+        lines.append(f"{name}:\n  Часов: {stats.get('hours',0)}\n  Общая сумма: {stats.get('amount',0)}\n")
+    await message.answer("\n".join(lines))
+
+# Обработка кнопок в настройках
+@dp.message(F.text == "Метод выплаты")
+async def set_payout_method(message: types.Message, state: FSMContext):
+    await message.answer("Введите метод выплаты (например, PayPal, карта и т.д.):", reply_markup=ReplyKeyboardRemove())
+    await state.set_state(SettingsForm.payout_method)
+
+@dp.message(F.text == "Реквизиты")
+async def set_requisites(message: types.Message, state: FSMContext):
+    await message.answer("Введите ваши реквизиты:", reply_markup=ReplyKeyboardRemove())
+    await state.set_state(SettingsForm.requisites)
+
+@dp.message(F.text == "Страна")
+async def set_country(message: types.Message, state: FSMContext):
+    await message.answer("Введите вашу страну:", reply_markup=ReplyKeyboardRemove())
+    await state.set_state(SettingsForm.country)
+
+@dp.message(F.text == "Банк")
+async def set_bank(message: types.Message, state: FSMContext):
+    await message.answer("Введите ваш банк:", reply_markup=ReplyKeyboardRemove())
+    await state.set_state(SettingsForm.bank)
+
+# Сохранение данных из ввода
+@dp.message(SettingsForm.payout_method)
+async def save_payout_method(message: types.Message, state: FSMContext):
+    user_id = str(message.from_user.id)
+    user_settings.setdefault(user_id, {})["payout_method"] = message.text
+    save_json(SETTINGS_FILE, user_settings)
+    await message.answer("Метод выплаты сохранён.", reply_markup=get_settings_menu_kb(is_admin(message.from_user.id), is_global_admin(message.from_user.id)))
     await state.clear()
 
-@dp.message(F.text == "Выдать админа")
-async def give_admin_start(message: types.Message, state: FSMContext):
-    if not is_global_admin(message.from_user.id):
-        await message.answer("У вас нет прав для этого действия.")
-        return
-    await message.answer("Введите Telegram user id пользователя, которому хотите сделать админом:", reply_markup=back_settings_kb)
-    await state.set_state(SettingsForm.give_admin)
-
-@dp.message(SettingsForm.give_admin, F.text == "Назад в настройки")
-async def back_from_give_admin(message: types.Message, state: FSMContext):
-    await state.clear()
-    await admin_panel(message)
-
-@dp.message(SettingsForm.give_admin)
-async def give_admin_process(message: types.Message, state: FSMContext):
-    if not is_global_admin(message.from_user.id):
-        await message.answer("У вас нет прав для этого действия.")
-        await state.clear()
-        return
-    new_admin_id = message.text.strip()
-    if not new_admin_id.isdigit():
-        await message.answer("User id должен быть числом. Попробуйте ещё раз или нажмите 'Назад в настройки'.")
-        return
-    admins.add(new_admin_id)
-    save_json(ADMINS_FILE, list(admins))
-    await message.answer(f"Пользователь с user id {new_admin_id} теперь админ!", reply_markup=get_admin_panel_kb(True))
-    await state.clear()
-    try:
-        await bot.send_message(int(new_admin_id), "Вам выдан статус администратора бота!")
-    except Exception:
-        pass
-
-@dp.message(F.text == "Удалить админа")
-async def remove_admin_start(message: types.Message, state: FSMContext):
-    if not is_global_admin(message.from_user.id):
-        await message.answer("У вас нет прав для этого действия.")
-        return
-    await message.answer("Введите Telegram user id администратора, которого хотите удалить:", reply_markup=back_settings_kb)
-    await state.set_state(SettingsForm.remove_admin)
-
-@dp.message(SettingsForm.remove_admin, F.text == "Назад в настройки")
-async def back_from_remove_admin(message: types.Message, state: FSMContext):
-    await state.clear()
-    await admin_panel(message)
-
-@dp.message(SettingsForm.remove_admin)
-async def remove_admin_process(message: types.Message, state: FSMContext):
-    if not is_global_admin(message.from_user.id):
-        await message.answer("У вас нет прав для этого действия.")
-        await state.clear()
-        return
-    remove_admin_id = message.text.strip()
-    if not remove_admin_id.isdigit():
-        await message.answer("User id должен быть числом. Попробуйте ещё раз или нажмите 'Назад в настройки'.")
-        return
-    if remove_admin_id in admins:
-        admins.remove(remove_admin_id)
-        save_json(ADMINS_FILE, list(admins))
-        await message.answer(f"Пользователь с user id {remove_admin_id} удалён из админов!", reply_markup=get_admin_panel_kb(True))
-        try:
-            await bot.send_message(int(remove_admin_id), "Ваш статус администратора бота был удалён.")
-        except Exception:
-            pass
-    else:
-        await message.answer("Пользователь с таким user id не найден в списке админов.", reply_markup=get_admin_panel_kb(True))
+@dp.message(SettingsForm.requisites)
+async def save_requisites(message: types.Message, state: FSMContext):
+    user_id = str(message.from_user.id)
+    user_settings.setdefault(user_id, {})["requisites"] = message.text
+    save_json(SETTINGS_FILE, user_settings)
+    await message.answer("Реквизиты сохранены.", reply_markup=get_settings_menu_kb(is_admin(message.from_user.id), is_global_admin(message.from_user.id)))
     await state.clear()
 
+@dp.message(SettingsForm.country)
+async def save_country(message: types.Message, state: FSMContext):
+    user_id = str(message.from_user.id)
+    user_settings.setdefault(user_id, {})["country"] = message.text
+    save_json(SETTINGS_FILE, user_settings)
+    await message.answer("Страна сохранена.", reply_markup=get_settings_menu_kb(is_admin(message.from_user.id), is_global_admin(message.from_user.id)))
+    await state.clear()
+
+@dp.message(SettingsForm.bank)
+async def save_bank(message: types.Message, state: FSMContext):
+    user_id = str(message.from_user.id)
+    user_settings.setdefault(user_id, {})["bank"] = message.text
+    save_json(SETTINGS_FILE, user_settings)
+    await message.answer("Банк сохранён.", reply_markup=get_settings_menu_kb(is_admin(message.from_user.id), is_global_admin(message.from_user.id)))
+    await state.clear()
+
+# Запуск бота
 async def main():
-    await dp.start_polling(bot)
+    await dp.start_polling()
 
 if __name__ == "__main__":
     asyncio.run(main())
