@@ -1,0 +1,11 @@
+{
+  "BOT_TOKEN": "7673946117:AAEzu5CSMfABRgvi9036Pz6cHJ08hP317z0",
+  "initial_global_admins": ["5838284980"],
+  "files": {
+    "stats": "user_stats.json",
+    "settings": "user_settings.json",
+    "allowed_users": "allowed_users.json",
+    "admins": "admins.json",
+    "global_admins": "global_admins.json"
+  }
+}

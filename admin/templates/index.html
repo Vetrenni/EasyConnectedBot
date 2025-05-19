@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная - Админ-панель{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Панель управления</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-3 mb-4">
+        <div class="card text-white bg-primary">
+            <div class="card-body">
+                <h5 class="card-title">Пользователи</h5>
+                <p class="card-text display-4">{{ users_count }}</p>
+                <a href="{{ url_for('users') }}" class="btn btn-light">Управление</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-4">
+        <div class="card text-white bg-success">
+            <div class="card-body">
+                <h5 class="card-title">Администраторы</h5>
+                <p class="card-text display-4">{{ admins_count }}</p>
+                <a href="{{ url_for('admins') }}" class="btn btn-light">Управление</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-4">
+        <div class="card text-white bg-info">
+            <div class="card-body">
+                <h5 class="card-title">Стриммеры</h5>
+                <p class="card-text display-4">{{ streamers_count }}</p>
+                <a href="{{ url_for('streamers') }}" class="btn btn-light">Управление</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-4">
+        <div class="card text-white bg-warning">
+            <div class="card-body">
+                <h5 class="card-title">Активные чаты</h5>
+                <p class="card-text display-4">{{ chats_count }}</p>
+                <a href="{{ url_for('chats') }}" class="btn btn-light">Управление</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>Основные действия</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Пользователи</h6>
+                        <p>Просмотр и управление обычными пользователями</p>
+                        <a href="{{ url_for('users') }}" class="btn btn-primary">Открыть</a>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Администраторы</h6>
+                        <p>Просмотр и управление администраторами</p>
+                        <a href="{{ url_for('admins') }}" class="btn btn-success">Открыть</a>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h6>Стриммеры</h6>
+                        <p>Просмотр и управление стриммерами</p>
+                        <a href="{{ url_for('streamers') }}" class="btn btn-info">Открыть</a>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Чаты</h6>
+                        <p>Просмотр и управление чатами пользователей</p>
+                        <a href="{{ url_for('chats') }}" class="btn btn-warning">Открыть</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
