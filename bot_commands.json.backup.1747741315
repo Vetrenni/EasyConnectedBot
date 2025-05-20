@@ -1,0 +1,56 @@
+[
+    {
+        "command": "send_message",
+        "params": {
+            "user_id": "7968808913",
+            "text": "Вам были выданы права администратора в боте. Используйте /start для начала работы."
+        },
+        "status": "pending",
+        "timestamp": "0"
+    },
+    {
+        "command": "send_message",
+        "params": {
+            "user_id": "7968808913",
+            "text": "Вам были выданы права стриммера в боте. Используйте /start для обновления меню."
+        },
+        "status": "pending",
+        "timestamp": "0"
+    },
+    {
+        "command": "send_message",
+        "params": {
+            "user_id": "7335348694",
+            "text": "Вам были выданы права администратора в боте. Используйте /start для начала работы."
+        },
+        "status": "pending",
+        "timestamp": "0"
+    },
+    {
+        "command": "send_message",
+        "params": {
+            "user_id": "7968808913",
+            "text": "Вам был предоставлен доступ к боту. Используйте /start для начала работы."
+        },
+        "status": "pending",
+        "timestamp": "0"
+    },
+    {
+        "command": "send_message",
+        "params": {
+            "user_id": "5838284980",
+            "text": "Тестовое сообщение от fix.py. Время: 2025-05-20 14:33:15"
+        },
+        "status": "pending",
+        "timestamp": "0"
+    },
+    {
+        "command": "send_message",
+        "params": {
+            "user_id": "5838284980",
+            "text": "Тестовое сообщение от fix.py. Время: 2025-05-20 14:40:46"
+        },
+        "status": "pending",
+        "timestamp": "1747741246.385239"
+    }
+]

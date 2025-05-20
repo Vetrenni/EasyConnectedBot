@@ -1,0 +1,307 @@
+2025-05-20 14:24:55,099 - fix - INFO - === Выполнение диагностики системы ===
+2025-05-20 14:24:55,101 - fix - INFO - Файл PID не найден, бот не запущен
+2025-05-20 14:24:55,101 - fix - INFO - Обнаружено 4 проблем:
+2025-05-20 14:24:55,101 - fix - INFO - - Файл admins.json не синхронизирован между ботом и админкой
+2025-05-20 14:24:55,101 - fix - INFO - - Файл streamers.json не синхронизирован между ботом и админкой
+2025-05-20 14:24:55,101 - fix - INFO - - Файл bot_commands.json не синхронизирован между ботом и админкой
+2025-05-20 14:24:55,101 - fix - INFO - - Бот не запущен или файл PID отсутствует
+2025-05-20 14:24:55,101 - fix - INFO - === Диагностика системы завершена ===
+2025-05-20 14:25:02,040 - fix - INFO - === Выполнение полного исправления системы ===
+2025-05-20 14:25:02,042 - fix - INFO - Восстановлено 0 JSON-файлов
+2025-05-20 14:25:02,042 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admins.json
+2025-05-20 14:25:02,042 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\admins.json
+2025-05-20 14:25:02,043 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\global_admins.json
+2025-05-20 14:25:02,043 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\global_admins.json
+2025-05-20 14:25:02,043 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\allowed_users.json
+2025-05-20 14:25:02,043 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\allowed_users.json
+2025-05-20 14:25:02,043 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\streamers.json
+2025-05-20 14:25:02,044 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\streamers.json
+2025-05-20 14:25:02,044 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\user_stats.json
+2025-05-20 14:25:02,044 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_stats.json
+2025-05-20 14:25:02,044 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\user_settings.json
+2025-05-20 14:25:02,044 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_settings.json
+2025-05-20 14:25:02,044 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\chats.json
+2025-05-20 14:25:02,045 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\chats.json
+2025-05-20 14:25:02,045 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\bot_commands.json
+2025-05-20 14:25:02,045 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\bot_commands.json
+2025-05-20 14:25:02,045 - fix - INFO - Исправлены права доступа для 16 файлов
+2025-05-20 14:25:02,046 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admins.json.backup.1747740302
+2025-05-20 14:25:02,046 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admins.json
+2025-05-20 14:25:02,047 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\global_admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\global_admins.json.backup.1747740302
+2025-05-20 14:25:02,047 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\global_admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\global_admins.json
+2025-05-20 14:25:02,047 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\allowed_users.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\allowed_users.json.backup.1747740302
+2025-05-20 14:25:02,048 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\allowed_users.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\allowed_users.json
+2025-05-20 14:25:02,048 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\streamers.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\streamers.json.backup.1747740302
+2025-05-20 14:25:02,049 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\streamers.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\streamers.json
+2025-05-20 14:25:02,049 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\user_stats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\user_stats.json.backup.1747740302
+2025-05-20 14:25:02,050 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_stats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\user_stats.json
+2025-05-20 14:25:02,051 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\user_settings.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\user_settings.json.backup.1747740302
+2025-05-20 14:25:02,051 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_settings.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\user_settings.json
+2025-05-20 14:25:02,052 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\chats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\chats.json.backup.1747740302
+2025-05-20 14:25:02,052 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\chats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\chats.json
+2025-05-20 14:25:02,053 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\bot_commands.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\bot_commands.json.backup.1747740302
+2025-05-20 14:25:02,053 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\bot_commands.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\bot_commands.json
+2025-05-20 14:25:02,053 - fix - INFO - Синхронизировано 8 файлов из админки в бота
+2025-05-20 14:25:02,053 - fix - INFO - Сброшены метки времени для зависших команд
+2025-05-20 14:25:02,054 - fix - INFO - Проверка файла команд бота завершена
+2025-05-20 14:25:02,054 - fix - INFO - Файл PID не найден, бот не запущен
+2025-05-20 14:25:02,054 - fix - INFO - Запуск бота...
+2025-05-20 14:25:07,056 - fix - ERROR - Бот не запустился. Код выхода: 1
+2025-05-20 14:25:07,057 - fix - ERROR - Стандартный вывод: 
+2025-05-20 14:25:07,057 - fix - ERROR - Ошибки:   File "C:\Users\New\PycharmProjects\PythonProject\my_bot\main.py", line 83
+    if cmd_type == "send_message":
+    ^
+IndentationError: expected an indented block
+
+2025-05-20 14:25:07,057 - fix - INFO - Бот запущен заново
+2025-05-20 14:25:07,058 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\admins.json.backup.1747740307
+2025-05-20 14:25:07,059 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\admins.json
+2025-05-20 14:25:07,060 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\global_admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\global_admins.json.backup.1747740307
+2025-05-20 14:25:07,060 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\global_admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\global_admins.json
+2025-05-20 14:25:07,061 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\allowed_users.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\allowed_users.json.backup.1747740307
+2025-05-20 14:25:07,062 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\allowed_users.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\allowed_users.json
+2025-05-20 14:25:07,062 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\streamers.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\streamers.json.backup.1747740307
+2025-05-20 14:25:07,063 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\streamers.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\streamers.json
+2025-05-20 14:25:07,063 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_stats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_stats.json.backup.1747740307
+2025-05-20 14:25:07,064 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\user_stats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_stats.json
+2025-05-20 14:25:07,065 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_settings.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_settings.json.backup.1747740307
+2025-05-20 14:25:07,065 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\user_settings.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_settings.json
+2025-05-20 14:25:07,066 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\chats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\chats.json.backup.1747740307
+2025-05-20 14:25:07,067 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\chats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\chats.json
+2025-05-20 14:25:07,067 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\bot_commands.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\bot_commands.json.backup.1747740307
+2025-05-20 14:25:07,068 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\bot_commands.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\bot_commands.json
+2025-05-20 14:25:07,068 - fix - INFO - Синхронизировано 8 файлов из бота в админку
+2025-05-20 14:25:07,072 - fix - INFO - Тестовое сообщение успешно отправлено администратору 5838284980
+2025-05-20 14:25:07,072 - fix - INFO - === Полное исправление системы завершено ===
+2025-05-20 14:25:40,618 - fix - INFO - Тестовое сообщение успешно отправлено администратору 5838284980
+2025-05-20 14:33:10,051 - fix - INFO - === Выполнение полного исправления системы ===
+2025-05-20 14:33:10,052 - fix - INFO - Восстановлено 0 JSON-файлов
+2025-05-20 14:33:10,053 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admins.json
+2025-05-20 14:33:10,053 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\admins.json
+2025-05-20 14:33:10,053 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\global_admins.json
+2025-05-20 14:33:10,053 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\global_admins.json
+2025-05-20 14:33:10,054 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\allowed_users.json
+2025-05-20 14:33:10,054 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\allowed_users.json
+2025-05-20 14:33:10,054 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\streamers.json
+2025-05-20 14:33:10,054 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\streamers.json
+2025-05-20 14:33:10,054 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\user_stats.json
+2025-05-20 14:33:10,054 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_stats.json
+2025-05-20 14:33:10,055 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\user_settings.json
+2025-05-20 14:33:10,055 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_settings.json
+2025-05-20 14:33:10,055 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\chats.json
+2025-05-20 14:33:10,055 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\chats.json
+2025-05-20 14:33:10,055 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\bot_commands.json
+2025-05-20 14:33:10,055 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\bot_commands.json
+2025-05-20 14:33:10,055 - fix - INFO - Исправлены права доступа для 16 файлов
+2025-05-20 14:33:10,056 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admins.json.backup.1747740790
+2025-05-20 14:33:10,057 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admins.json
+2025-05-20 14:33:10,058 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\global_admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\global_admins.json.backup.1747740790
+2025-05-20 14:33:10,058 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\global_admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\global_admins.json
+2025-05-20 14:33:10,059 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\allowed_users.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\allowed_users.json.backup.1747740790
+2025-05-20 14:33:10,059 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\allowed_users.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\allowed_users.json
+2025-05-20 14:33:10,060 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\streamers.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\streamers.json.backup.1747740790
+2025-05-20 14:33:10,060 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\streamers.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\streamers.json
+2025-05-20 14:33:10,061 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\user_stats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\user_stats.json.backup.1747740790
+2025-05-20 14:33:10,061 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_stats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\user_stats.json
+2025-05-20 14:33:10,062 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\user_settings.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\user_settings.json.backup.1747740790
+2025-05-20 14:33:10,063 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_settings.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\user_settings.json
+2025-05-20 14:33:10,063 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\chats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\chats.json.backup.1747740790
+2025-05-20 14:33:10,064 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\chats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\chats.json
+2025-05-20 14:33:10,065 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\bot_commands.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\bot_commands.json.backup.1747740790
+2025-05-20 14:33:10,065 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\bot_commands.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\bot_commands.json
+2025-05-20 14:33:10,065 - fix - INFO - Синхронизировано 8 файлов из админки в бота
+2025-05-20 14:33:10,066 - fix - INFO - Сброшены метки времени для зависших команд
+2025-05-20 14:33:10,066 - fix - INFO - Проверка файла команд бота завершена
+2025-05-20 14:33:10,066 - fix - INFO - Файл PID не найден, бот не запущен
+2025-05-20 14:33:10,066 - fix - INFO - Запуск бота...
+2025-05-20 14:33:15,080 - fix - ERROR - Бот не запустился. Код выхода: 1
+2025-05-20 14:33:15,080 - fix - ERROR - Стандартный вывод: 
+2025-05-20 14:33:15,080 - fix - ERROR - Ошибки:   File "C:\Users\New\PycharmProjects\PythonProject\my_bot\main.py", line 83
+    if cmd_type == "send_message":
+    ^
+IndentationError: expected an indented block
+
+2025-05-20 14:33:15,080 - fix - INFO - Бот запущен заново
+2025-05-20 14:33:15,081 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\admins.json.backup.1747740795
+2025-05-20 14:33:15,082 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\admins.json
+2025-05-20 14:33:15,083 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\global_admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\global_admins.json.backup.1747740795
+2025-05-20 14:33:15,084 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\global_admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\global_admins.json
+2025-05-20 14:33:15,085 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\allowed_users.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\allowed_users.json.backup.1747740795
+2025-05-20 14:33:15,085 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\allowed_users.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\allowed_users.json
+2025-05-20 14:33:15,086 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\streamers.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\streamers.json.backup.1747740795
+2025-05-20 14:33:15,086 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\streamers.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\streamers.json
+2025-05-20 14:33:15,087 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_stats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_stats.json.backup.1747740795
+2025-05-20 14:33:15,088 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\user_stats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_stats.json
+2025-05-20 14:33:15,088 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_settings.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_settings.json.backup.1747740795
+2025-05-20 14:33:15,089 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\user_settings.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_settings.json
+2025-05-20 14:33:15,090 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\chats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\chats.json.backup.1747740795
+2025-05-20 14:33:15,090 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\chats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\chats.json
+2025-05-20 14:33:15,091 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\bot_commands.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\bot_commands.json.backup.1747740795
+2025-05-20 14:33:15,091 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\bot_commands.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\bot_commands.json
+2025-05-20 14:33:15,091 - fix - INFO - Синхронизировано 8 файлов из бота в админку
+2025-05-20 14:33:15,092 - fix - INFO - Тестовое сообщение успешно отправлено администратору 5838284980
+2025-05-20 14:33:15,092 - fix - INFO - === Полное исправление системы завершено ===
+2025-05-20 14:34:32,900 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admins.json
+2025-05-20 14:34:32,900 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\admins.json
+2025-05-20 14:34:32,900 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\global_admins.json
+2025-05-20 14:34:32,901 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\global_admins.json
+2025-05-20 14:34:32,901 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\allowed_users.json
+2025-05-20 14:34:32,901 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\allowed_users.json
+2025-05-20 14:34:32,901 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\streamers.json
+2025-05-20 14:34:32,901 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\streamers.json
+2025-05-20 14:34:32,901 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\user_stats.json
+2025-05-20 14:34:32,902 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_stats.json
+2025-05-20 14:34:32,902 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\user_settings.json
+2025-05-20 14:34:32,902 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_settings.json
+2025-05-20 14:34:32,902 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\chats.json
+2025-05-20 14:34:32,902 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\chats.json
+2025-05-20 14:34:32,902 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\bot_commands.json
+2025-05-20 14:34:32,902 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\bot_commands.json
+2025-05-20 14:40:41,347 - fix - INFO - === Выполнение полного исправления системы ===
+2025-05-20 14:40:41,350 - fix - INFO - Восстановлено 0 JSON-файлов
+2025-05-20 14:40:41,350 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admins.json
+2025-05-20 14:40:41,350 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\admins.json
+2025-05-20 14:40:41,351 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\global_admins.json
+2025-05-20 14:40:41,351 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\global_admins.json
+2025-05-20 14:40:41,351 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\allowed_users.json
+2025-05-20 14:40:41,351 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\allowed_users.json
+2025-05-20 14:40:41,352 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\streamers.json
+2025-05-20 14:40:41,352 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\streamers.json
+2025-05-20 14:40:41,352 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\user_stats.json
+2025-05-20 14:40:41,352 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_stats.json
+2025-05-20 14:40:41,352 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\user_settings.json
+2025-05-20 14:40:41,352 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_settings.json
+2025-05-20 14:40:41,353 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\chats.json
+2025-05-20 14:40:41,353 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\chats.json
+2025-05-20 14:40:41,353 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\bot_commands.json
+2025-05-20 14:40:41,353 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\bot_commands.json
+2025-05-20 14:40:41,353 - fix - INFO - Исправлены права доступа для 16 файлов
+2025-05-20 14:40:41,354 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admins.json.backup.1747741241
+2025-05-20 14:40:41,354 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admins.json
+2025-05-20 14:40:41,355 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\global_admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\global_admins.json.backup.1747741241
+2025-05-20 14:40:41,355 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\global_admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\global_admins.json
+2025-05-20 14:40:41,356 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\allowed_users.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\allowed_users.json.backup.1747741241
+2025-05-20 14:40:41,356 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\allowed_users.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\allowed_users.json
+2025-05-20 14:40:41,356 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\streamers.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\streamers.json.backup.1747741241
+2025-05-20 14:40:41,357 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\streamers.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\streamers.json
+2025-05-20 14:40:41,357 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\user_stats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\user_stats.json.backup.1747741241
+2025-05-20 14:40:41,357 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_stats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\user_stats.json
+2025-05-20 14:40:41,358 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\user_settings.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\user_settings.json.backup.1747741241
+2025-05-20 14:40:41,358 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_settings.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\user_settings.json
+2025-05-20 14:40:41,359 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\chats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\chats.json.backup.1747741241
+2025-05-20 14:40:41,359 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\chats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\chats.json
+2025-05-20 14:40:41,360 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\bot_commands.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\bot_commands.json.backup.1747741241
+2025-05-20 14:40:41,360 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\bot_commands.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\bot_commands.json
+2025-05-20 14:40:41,360 - fix - INFO - Синхронизировано 8 файлов из админки в бота
+2025-05-20 14:40:41,360 - fix - INFO - Сброшены метки времени для зависших команд
+2025-05-20 14:40:41,360 - fix - INFO - Проверка файла команд бота завершена
+2025-05-20 14:40:41,361 - fix - INFO - Файл PID не найден, бот не запущен
+2025-05-20 14:40:41,361 - fix - INFO - Запуск бота...
+2025-05-20 14:40:46,373 - fix - ERROR - Бот не запустился. Код выхода: 1
+2025-05-20 14:40:46,373 - fix - ERROR - Стандартный вывод: 
+2025-05-20 14:40:46,373 - fix - ERROR - Ошибки:   File "C:\Users\New\PycharmProjects\PythonProject\my_bot\main.py", line 83
+    if cmd_type == "send_message":
+    ^
+IndentationError: expected an indented block
+
+2025-05-20 14:40:46,373 - fix - INFO - Бот запущен заново
+2025-05-20 14:40:46,374 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\admins.json.backup.1747741246
+2025-05-20 14:40:46,375 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\admins.json
+2025-05-20 14:40:46,376 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\global_admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\global_admins.json.backup.1747741246
+2025-05-20 14:40:46,376 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\global_admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\global_admins.json
+2025-05-20 14:40:46,377 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\allowed_users.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\allowed_users.json.backup.1747741246
+2025-05-20 14:40:46,377 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\allowed_users.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\allowed_users.json
+2025-05-20 14:40:46,378 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\streamers.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\streamers.json.backup.1747741246
+2025-05-20 14:40:46,379 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\streamers.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\streamers.json
+2025-05-20 14:40:46,380 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_stats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_stats.json.backup.1747741246
+2025-05-20 14:40:46,380 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\user_stats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_stats.json
+2025-05-20 14:40:46,381 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_settings.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_settings.json.backup.1747741246
+2025-05-20 14:40:46,381 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\user_settings.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_settings.json
+2025-05-20 14:40:46,382 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\chats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\chats.json.backup.1747741246
+2025-05-20 14:40:46,383 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\chats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\chats.json
+2025-05-20 14:40:46,383 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\bot_commands.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\bot_commands.json.backup.1747741246
+2025-05-20 14:40:46,384 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\bot_commands.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\bot_commands.json
+2025-05-20 14:40:46,384 - fix - INFO - Синхронизировано 8 файлов из бота в админку
+2025-05-20 14:40:46,385 - fix - INFO - Тестовое сообщение успешно отправлено администратору 5838284980
+2025-05-20 14:40:46,385 - fix - INFO - === Полное исправление системы завершено ===
+2025-05-20 14:40:52,923 - fix - INFO - === Выполнение диагностики системы ===
+2025-05-20 14:40:52,924 - fix - INFO - Файл PID не найден, бот не запущен
+2025-05-20 14:40:52,924 - fix - INFO - Обнаружено 3 проблем:
+2025-05-20 14:40:52,925 - fix - INFO - - Файл bot_commands.json не синхронизирован между ботом и админкой
+2025-05-20 14:40:52,925 - fix - INFO - - Бот не запущен или файл PID отсутствует
+2025-05-20 14:40:52,925 - fix - INFO - - В очереди команд бота 6 необработанных команд
+2025-05-20 14:40:52,925 - fix - INFO - === Диагностика системы завершена ===
+2025-05-20 14:41:55,680 - fix - INFO - === Выполнение полного исправления системы ===
+2025-05-20 14:41:55,682 - fix - INFO - Восстановлено 0 JSON-файлов
+2025-05-20 14:41:55,682 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admins.json
+2025-05-20 14:41:55,682 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\admins.json
+2025-05-20 14:41:55,682 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\global_admins.json
+2025-05-20 14:41:55,682 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\global_admins.json
+2025-05-20 14:41:55,683 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\allowed_users.json
+2025-05-20 14:41:55,683 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\allowed_users.json
+2025-05-20 14:41:55,683 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\streamers.json
+2025-05-20 14:41:55,683 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\streamers.json
+2025-05-20 14:41:55,683 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\user_stats.json
+2025-05-20 14:41:55,684 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_stats.json
+2025-05-20 14:41:55,684 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\user_settings.json
+2025-05-20 14:41:55,684 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_settings.json
+2025-05-20 14:41:55,684 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\chats.json
+2025-05-20 14:41:55,684 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\chats.json
+2025-05-20 14:41:55,685 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\bot_commands.json
+2025-05-20 14:41:55,685 - fix - INFO - Установлены права доступа 666 для C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\bot_commands.json
+2025-05-20 14:41:55,685 - fix - INFO - Исправлены права доступа для 16 файлов
+2025-05-20 14:41:55,686 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admins.json.backup.1747741315
+2025-05-20 14:41:55,686 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admins.json
+2025-05-20 14:41:55,686 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\global_admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\global_admins.json.backup.1747741315
+2025-05-20 14:41:55,687 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\global_admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\global_admins.json
+2025-05-20 14:41:55,687 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\allowed_users.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\allowed_users.json.backup.1747741315
+2025-05-20 14:41:55,688 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\allowed_users.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\allowed_users.json
+2025-05-20 14:41:55,688 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\streamers.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\streamers.json.backup.1747741315
+2025-05-20 14:41:55,689 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\streamers.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\streamers.json
+2025-05-20 14:41:55,689 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\user_stats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\user_stats.json.backup.1747741315
+2025-05-20 14:41:55,690 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_stats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\user_stats.json
+2025-05-20 14:41:55,691 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\user_settings.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\user_settings.json.backup.1747741315
+2025-05-20 14:41:55,691 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_settings.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\user_settings.json
+2025-05-20 14:41:55,691 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\chats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\chats.json.backup.1747741315
+2025-05-20 14:41:55,692 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\chats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\chats.json
+2025-05-20 14:41:55,693 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\bot_commands.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\bot_commands.json.backup.1747741315
+2025-05-20 14:41:55,693 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\bot_commands.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\bot_commands.json
+2025-05-20 14:41:55,693 - fix - INFO - Синхронизировано 8 файлов из админки в бота
+2025-05-20 14:41:55,694 - fix - INFO - Сброшены метки времени для зависших команд
+2025-05-20 14:41:55,694 - fix - INFO - Проверка файла команд бота завершена
+2025-05-20 14:41:55,694 - fix - INFO - Файл PID не найден, бот не запущен
+2025-05-20 14:41:55,694 - fix - INFO - Запуск бота...
+2025-05-20 14:42:00,702 - fix - ERROR - Бот не запустился. Код выхода: 1
+2025-05-20 14:42:00,703 - fix - ERROR - Стандартный вывод: 
+2025-05-20 14:42:00,703 - fix - ERROR - Ошибки:   File "C:\Users\New\PycharmProjects\PythonProject\my_bot\main.py", line 83
+    if cmd_type == "send_message":
+    ^
+IndentationError: expected an indented block
+
+2025-05-20 14:42:00,703 - fix - INFO - Бот запущен заново
+2025-05-20 14:42:00,704 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\admins.json.backup.1747741320
+2025-05-20 14:42:00,705 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\admins.json
+2025-05-20 14:42:00,706 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\global_admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\global_admins.json.backup.1747741320
+2025-05-20 14:42:00,706 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\global_admins.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\global_admins.json
+2025-05-20 14:42:00,707 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\allowed_users.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\allowed_users.json.backup.1747741320
+2025-05-20 14:42:00,707 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\allowed_users.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\allowed_users.json
+2025-05-20 14:42:00,708 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\streamers.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\streamers.json.backup.1747741320
+2025-05-20 14:42:00,709 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\streamers.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\streamers.json
+2025-05-20 14:42:00,709 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_stats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_stats.json.backup.1747741320
+2025-05-20 14:42:00,710 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\user_stats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_stats.json
+2025-05-20 14:42:00,711 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_settings.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_settings.json.backup.1747741320
+2025-05-20 14:42:00,711 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\user_settings.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\user_settings.json
+2025-05-20 14:42:00,712 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\chats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\chats.json.backup.1747741320
+2025-05-20 14:42:00,712 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\chats.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\chats.json
+2025-05-20 14:42:00,713 - fix - INFO - Создана резервная копия файла C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\bot_commands.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\bot_commands.json.backup.1747741320
+2025-05-20 14:42:00,714 - fix - INFO - Успешно скопирован файл C:\Users\New\PycharmProjects\PythonProject\my_bot\bot_commands.json -> C:\Users\New\PycharmProjects\PythonProject\my_bot\admin\bot_commands.json
+2025-05-20 14:42:00,714 - fix - INFO - Синхронизировано 8 файлов из бота в админку
+2025-05-20 14:42:00,715 - fix - INFO - Тестовое сообщение успешно отправлено администратору 5838284980
+2025-05-20 14:42:00,715 - fix - INFO - === Полное исправление системы завершено ===
+2025-05-20 14:42:06,468 - fix - INFO - === Выполнение диагностики системы ===
+2025-05-20 14:42:06,470 - fix - INFO - Файл PID не найден, бот не запущен
+2025-05-20 14:42:06,470 - fix - INFO - Обнаружено 3 проблем:
+2025-05-20 14:42:06,470 - fix - INFO - - Файл bot_commands.json не синхронизирован между ботом и админкой
+2025-05-20 14:42:06,470 - fix - INFO - - Бот не запущен или файл PID отсутствует
+2025-05-20 14:42:06,470 - fix - INFO - - В очереди команд бота 6 необработанных команд
+2025-05-20 14:42:06,470 - fix - INFO - === Диагностика системы завершена ===
